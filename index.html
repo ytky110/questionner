@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FCards</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>FCards</h1>
+  <div id="load">
+    <p>
+      <label for="file">ファイルを選択：</label>
+      <input id="file" type="file">
+    </p>
+    <p>
+      <label for="wnumber">問題数：</label>
+      <output id="wnumber"></output>
+      <br>
+      <label for="exnumber">出題数：</label>
+      <input id="exnumber" type="number">
+    </p>
+    <p>
+      <button id="start" hidden>始める</button>
+    </p>
+  </div>
+
+  <div id="ex" hidden>
+    <p>
+      <label for="instructions">指示：</label>
+      <output id="instructions"></output>
+      <br>
+      <label for="question">問題：</label>
+      <output id="question"></output>
+    </p>
+    <p>
+      <label for="input">Input:</label>
+      <br>
+      <input id="input" type="text">
+    </p>
+    <p>
+      <input id="choice" type="radio">
+    </p>
+    <p>
+      <button id="check">確認</button>
+    </p>
+    <p>
+      <label for="response">答え：</label>
+      <br>
+      <output id="response"></output>
+    </p>
+    <p>
+      <button id="ok">正解</button>
+      <button id="bad">不正解</button>
+    </p>
+    <p>
+      <button id="next">次</button>
+    </p>
+  </div>
+
+  <div id="result" hidden>
+    <label for="points">点数：</label>
+    <output id="points"></output>
+  </div>
+
+  <div id="error" hidden>
+    <label for="errmsg"><br>エラー：</label>
+    <output id="errmsg"></output>
+  </div>
+
+  <div class="footer">
+    <hr>
+    <p>home =&gt; <a href="https://ytky110.github.io/">index.html</a></p>
+    <p>Yutaka Goy - &lt;me@yutaka.ch&gt;</p>
+  </div>
+</body>
+</html>
