@@ -24,3 +24,16 @@ JSON
     - 問題 string
     - 選択肢 string[]
     - 解答 string
+
+```
+{
+    "questions": [
+        {
+            type;
+            question;
+            choices?;
+            answer;
+        }
+    ]
+}
+```

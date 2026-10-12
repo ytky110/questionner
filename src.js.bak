@@ -1,0 +1,142 @@
+const QuestionType = Object.freeze({
+    CHOICE: "choice",
+    SELF: "self",
+});
+
+class Question {
+    constructor(type, question, answer, choices = []) {
+        this.type = type;
+        this.question = question;
+        this.answer = answer;
+        this.choices = choices;
+    }
+}
+
+class Data {
+    constructor(qdata, exnumber, index) {
+        this.qdata = qdata;
+        this.exnumber = exnumber;
+        this.index = index;
+    }
+
+    
+}
+
+class Screen {
+    static load_div = document.getElementById("load");
+    static ex_div = document.getElementById("ex");
+    static result_div = document.getElementById("result");
+    static error_div = document.getElementById("error");
+
+    static choice_radio = document.getElementById("choice");
+    static input_input = document.getElementById("input");
+    static ok_button = document.getElementById("ok");
+    static bad_button = document.getElementById("bad");
+    static next_button = document.getElementById("next");
+
+    static errmsg_output = document.getElementById("errmsg");
+
+    static show_start() {
+        this.load_div.hidden = false;
+        this.ex_div.hidden = true;
+        this.result_div.hidden = true;
+        this.error_div.hidden = true;
+    }
+
+    static show_ex() {
+        this.load_div.hidden = true;
+        this.ex_div.hidden = false;
+        this.result_div.hidden = true;
+        this.error_div.hidden = true;
+    }
+
+    static show_choice() {
+        this.show_ex();
+        this.choice_radio.hidden = false;
+        this.input_input.hidden = true;
+        this.ok_button.hidden = true;
+        this.bad_button.hidden = true;
+        this.next_button.hidden = true;
+    }
+
+    static show_choice_checked() {
+        this.show_choice();
+        this.next_button.hidden = false;
+    }
+
+    static show_self() {
+        this.show_ex();
+        this.choice_radio.hidden = true;
+        this.input_input.hidden = false;
+        this.ok_button.hidden = true;
+        this.bad_button.hidden = true;
+        this.next_button.hidden = true;
+    }
+
+    static show_self_checked() {
+        this.show_self();
+        this.ok_button.hidden = false;
+        this.bad_button.hidden = false;
+    }
+
+    static show_result() {
+        this.load_div.hidden = true;
+        this.ex_div.hidden = true;
+        this.result_div.hidden = false;
+        this.error_div.hidden = true;
+    }
+
+    static print_error(str) {
+        this.error_div.hidden = false;
+        this.errmsg_output.textContent = str;
+    }
+}
+
+function start() {
+    const exnumber_input = document.getElementById("exnumber_input");
+    const file_input = document.getElementById("file");
+
+    const file = file_input.files[0];
+    if (!file) {
+        Screen.print_error("ファイルを選択してください");
+        return;
+    }
+
+    const text = file.text();
+    const qdata = JSON.parse(text);
+
+    if (!exnumber_input.value) {
+        Screen.print_error("出題数を選択してください");
+        return;
+    }
+
+    let data = new Data(qdata, exnumber_input.value, 0);
+    return data;
+}
+
+function end() {
+}
+
+let data;
+
+const start_button = document.getElementById("start");
+const check_button = document.getElementById("check");
+const ok_button = document.getElementById("ok");
+const bad_button = document.getElementById("bad");
+const next_button = document.getElementById("next");
+
+Screen.show_start();
+
+const file_input = document.getElementById("file");
+file_input.addEventListener("change",
+    () => {
+        const qnumber_output = document.getElementById("qnumber");
+        qnumber_output.textContent = qdata.questions.length;
+    }
+);
+
+start_button.addEventListener("click",
+    () => {
+        data = start();
+    }
+);

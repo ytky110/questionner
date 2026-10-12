@@ -1,0 +1,14 @@
+{
+  "questions": [
+    {
+      "type": "choice",
+      "question": "「こんにちは」をフランス語にしなさい",
+      "choices": [
+        "bonjour",
+        "hello",
+        "hallo"
+      ],
+      "answer": "bonjour"
+    }
+  ]
+}
