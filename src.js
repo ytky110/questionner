@@ -10,12 +10,17 @@ class Elements {
         this.ex_div = $("ex");
         this.instructions_output = $("instructions");
         this.question_output = $("question");
+        this.input_div = $("input_div");
         this.input_input = $("input");
         this.choice_div = $("choice");
         this.check_button = $("check");
+        this.response_div = $("response_div");
         this.response_output = $("response");
+        this.self_buttons_div = $("self_buttons");
         this.ok_button = $("ok");
         this.bad_button = $("bad");
+        this.judge_div = $("judge");
+        this.message_output = $("message");
         this.next_button = $("next");
 
         this.result_div = $("result");
@@ -23,6 +28,57 @@ class Elements {
 
         this.error_div = $("error");
         this.errmsg_output = $("errmsg");
+    }
+
+    hide_all() {
+        this.load_div.hidden = true;
+
+        this.ex_div.hidden = true;
+        this.choice_div.hidden = true;
+        this.input_div.hidden = true
+        this.response_div.hidden = true;
+        this.self_buttons_div.hidden = true;
+        this.judge_div.hidden = true;
+
+        this.result_div.hidden = true;
+        this.error_div.hidden = true;
+    }
+
+    show_load() {
+        this.hide_all();
+        this.load_div.hidden = false;
+    }
+
+    show_ex() {
+        this.hide_all();
+        this.ex_div.hidden = false;
+    }
+
+    show_ex_choice() {
+        this.show_ex();
+        this.choice_div.hidden = false;
+    }
+
+    show_ex_checked() {
+        this.show_ex_choice();
+        this.response_div.hidden = false;
+        this.judge_div.hidden = false;
+    }
+
+    show_ex_self() {
+        this.show_ex();
+        this.input_div.hidden = false;
+    }
+
+    show_ex_self_checked() {
+        this.show_ex_self();
+        this.response_div.hidden = false;
+        this.self_buttons_div.hidden = false;
+    }
+
+    show_result() {
+        this.hide_all();
+        this.result_div.hidden = false;
     }
 }
 
@@ -38,13 +94,15 @@ class App {
 
         this.elements.file_input.addEventListener("change", () => {this.load_qdata()});
         this.elements.start_button.addEventListener("click", () => {this.start()});
-        this.elements.check_button.addEventListener("click", () => {this.check});
+        this.elements.check_button.addEventListener("click", () => {this.check()});
         this.elements.ok_button.addEventListener("click", () => {
             this.points += 1;
             this.next();
         });
-        this.elements.bad_button.addEventListener("click", () => {this.next});
-        this.elements.next_button.addEventListener("click", () => {this.next});
+        this.elements.bad_button.addEventListener("click", () => {this.next()});
+        this.elements.next_button.addEventListener("click", () => {this.next()});
+
+        this.elements.show_load();
     }
 
     async load_qdata() {
@@ -91,8 +149,13 @@ class App {
     }
 
     next() {
+        if (this.qlist.length === 0) {
+            this.result();
+            return;
+        }
         this.qactual = this.qlist.shift();
 
+        this.elements.show_ex();
         this.elements.question_output.textContent = this.qactual.question;
 
         switch (this.qactual.type) {
@@ -109,8 +172,10 @@ class App {
     }
 
     set_choice() {
-        const container = this.elements.choice_div;
+        this.elements.show_ex_choice();
+        this.elements.instructions_output.textContent = "選択肢を選んで確認ボタンを押してください";
 
+        const container = this.elements.choice_div;
         container.replaceChildren();
 
         if (this.qactual.choices.length === 0) {
@@ -132,9 +197,45 @@ class App {
     }
 
     set_self() {
+        this.elements.instructions_output.textContent = "自由に入力し、確認ボタンを押してください（入力内容は正誤に影響しません）。正誤判定は答えを見て行ってください";
+        this.elements.show_ex_self();
     }
 
     check() {
+        console.log("check()");
+        this.elements.response_output.textContent = this.qactual.answer;
+        switch (this.qactual.type) {
+            case "choice":
+                this.check_choice();
+                break;
+            case "self":
+                this.check_self();
+                break;
+            default:
+                this.print_error("不正なデータ：不明な問題形式");
+                break;
+        }
+    }
+
+    check_choice() {
+        this.elements.show_ex_checked();
+        const selected = document.querySelector('[name="answer"]:checked')?.value;
+
+        if (selected === this.qactual.answer) {
+            this.elements.message_output.textContent = "正解！";
+            this.points += 1;
+        } else {
+            this.elements.message_output.textContent = "不正解…";
+        }
+    }
+
+    check_self() {
+        this.elements.show_ex_self_checked();
+    }
+
+    result() {
+        this.elements.show_result();
+        this.elements.points_output.textContent = String(this.points) + "/" + String(this.exnumber);
     }
 
     print_error(str) {

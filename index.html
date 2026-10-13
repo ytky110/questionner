@@ -35,9 +35,11 @@
       <output id="question"></output>
     </p>
     <p>
-      <label for="input">Input:</label>
-      <br>
-      <input id="input" type="text">
+      <div id="input_div">
+        <label for="input">入力：</label>
+        <br>
+        <input id="input" type="text">
+      </div>
     </p>
     <p>
       <div id="choice"></div>
@@ -46,22 +48,31 @@
       <button id="check">確認</button>
     </p>
     <p>
-      <label for="response">答え：</label>
-      <br>
-      <output id="response"></output>
+      <div id="response_div">
+        <label for="response">答え：</label>
+        <br>
+        <output id="response"></output>
+      </div>
     </p>
     <p>
-      <button id="ok">正解</button>
-      <button id="bad">不正解</button>
+      <div id="self_buttons">
+        <button id="ok">正解</button>
+        <button id="bad">不正解</button>
+      </div>
     </p>
     <p>
-      <button id="next">次</button>
+      <div id="judge">
+        <output id="message"></output>
+        <br>
+        <button id="next">次</button>
+      </div>
     </p>
   </div>
 
   <div id="result">
     <label for="points">点数：</label>
     <output id="points"></output>
+    <p>やり直す、別の問題集をやるにはリロードしてください</p>
   </div>
 
   <div id="error">

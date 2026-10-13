@@ -1,0 +1,19 @@
+{
+  "questions": [
+    {
+      "type": "choice",
+      "question": "「さようなら」をフランス語にしなさい",
+      "choices": [
+        "bye",
+        "au revoir",
+        "je t'aime"
+      ],
+      "answer": "au revoir"
+    },
+    {
+      "type": "self",
+      "question": "次の文をフランス語に翻訳しなさい\n「このリンゴは赤い」",
+      "answer": "Cette pomme est rouge."
+    }
+  ]
+}
