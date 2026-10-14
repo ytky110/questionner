@@ -1,0 +1,60 @@
+{
+  "questions": [
+    {
+      "type": "choice",
+      "question": "「こんにちは」をフランス語にしなさい",
+      "choices": ["bonjour", "merci", "bonsoir"],
+      "answer": "bonjour"
+    },
+    {
+      "type": "choice",
+      "question": "「ありがとう」をフランス語にしなさい",
+      "choices": ["pardon", "merci", "salut"],
+      "answer": "merci"
+    },
+    {
+      "type": "self",
+      "question": "「さようなら」をフランス語で何と言う？",
+      "answer": "au revoir"
+    },
+    {
+      "type": "choice",
+      "question": "「猫」をフランス語にしなさい",
+      "choices": ["chien", "chat", "cheval"],
+      "answer": "chat"
+    },
+    {
+      "type": "self",
+      "question": "「水」をフランス語で何と言う？",
+      "answer": "eau"
+    },
+    {
+      "type": "choice",
+      "question": "être の意味は？",
+      "choices": ["持つ", "行く", "〜である"],
+      "answer": "〜である"
+    },
+    {
+      "type": "self",
+      "question": "avoir の意味は？",
+      "answer": "持つ"
+    },
+    {
+      "type": "choice",
+      "question": "「赤」をフランス語にしなさい",
+      "choices": ["bleu", "rouge", "vert"],
+      "answer": "rouge"
+    },
+    {
+      "type": "self",
+      "question": "aller の意味は？",
+      "answer": "行く"
+    },
+    {
+      "type": "choice",
+      "question": "「月曜日」をフランス語にしなさい",
+      "choices": ["dimanche", "mercredi", "lundi"],
+      "answer": "lundi"
+    }
+  ]
+}
