@@ -1,28 +1,226 @@
+:root {
+    color-scheme: light dark;
+    font-family: sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+
+    --border: light-dark(#d0d0d0, #444444);
+    --surface: light-dark(#f5f5f5, #242424);
+    --text: light-dark(#222222, #eeeeee);
+    --muted: light-dark(#666666, #aaaaaa);
+    --accent: light-dark(#333333, #dddddd);
+}
+
+* {
+    box-sizing: border-box;
+}
+
 html {
     max-width: 800px;
     margin: 0 auto;
     padding: 0 20px;
-    font-family: sans-serif;
-    font-size: 18px;
 }
 
-code {
-    background-color: #e1e1e1;
-    color: #000000;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    padding-left: 1px;
-    padding-right: 1px;
-    border-radius: 4px;
+body {
+    margin: 0;
+    color: var(--text);
 }
 
-.footer {
-    margin: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    text-align: center;
+h1 {
+    margin: 1.5rem 0;
+    font-size: 1.8rem;
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 1.25rem;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+#load,
+#ex,
+#result,
+#error {
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 1.25rem;
+}
+
+label {
+    font-weight: 600;
+}
+
+output {
+    display: block;
+    overflow-wrap: anywhere;
+}
+
+input,
+button {
+    font: inherit;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    min-width: 0;
+    padding: 0.55rem 0.7rem;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+
+input[type="file"] {
+    max-width: 100%;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    border-color: var(--muted);
+}
+
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+#load button,
+#check,
+#next {
+    margin-top: 0.5rem;
+}
+
+#ex {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+#ex .field {
+    margin-bottom: 0;
+}
+
+.question-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.question-header .field {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.question-header output {
+    margin-top: 0.25rem;
+    font-size: 1.1rem;
 }
 
 #choice label {
     display: block;
+    padding: 0.35rem 0;
+    font-weight: normal;
+}
+
+#response_div {
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+}
+
+#response {
+    margin-top: 0.35rem;
+    font-size: 1.1rem;
+}
+
+#self_buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+#judge {
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+}
+
+#message {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+#result p {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+#error {
+    border-color: #b44;
+}
+
+#error h2 {
+    color: light-dark(#a22, #f88);
+}
+
+code {
+    padding: 0.05em 0.25em;
+    color: light-dark(#222, #eee);
+    background: var(--surface);
+    border-radius: 4px;
+}
+
+footer {
+    margin: 2rem 0 1rem;
+    color: var(--muted);
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+footer hr {
+    border: 0;
+    border-top: 1px solid var(--border);
+}
+
+footer a {
+    color: inherit;
+}
+
+@media (max-width: 480px) {
+    html {
+        padding: 0 12px;
+    }
+
+    #load,
+    #ex,
+    #result,
+    #error {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+}
+
+[hidden] {
+    display: none !important;
 }

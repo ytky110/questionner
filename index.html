@@ -1,89 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-  <title>Questionner</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Questionner</title>
   <link rel="stylesheet" href="style.css">
   <script src="src.js" defer></script>
 </head>
 <body>
-  <h1>Questionner</h1>
-  <div id="load">
-    <p>
-      <label for="file">ファイルを選択：</label>
-      <input id="file" type="file">
-    </p>
-    <p>
-      <label for="qnumber">問題数：</label>
-      <output id="qnumber"></output>
-      <br>
-      <label for="exnumber">出題数：</label>
-      <input id="exnumber" type="number">
-    </p>
-    <p>
-      <button id="start">始める</button>
-    </p>
-  </div>
+  <header>
+    <h1>Questionner</h1>
+  </header>
 
-  <div id="ex">
-    <p>
-      <label for="instructions">指示：</label>
-      <output id="instructions"></output>
-      <br>
-      <label for="question">問題：</label>
-      <output id="question"></output>
-    </p>
-    <p>
-      <div id="input_div">
-        <label for="input">入力：</label>
-        <br>
-        <input id="input" type="text">
+  <main>
+    <section id="load">
+      <h2>設定</h2>
+
+      <div class="field">
+        <label for="file">問題集：</label>
+        <input id="file" type="file">
       </div>
-    </p>
-    <p>
+
+      <div class="field">
+        <label for="exnumber">出題数：</label>
+        <input id="exnumber" type="number">
+        <small>全 <output id="qnumber"></output> 問</small>
+      </div>
+
+      <button id="start">始める</button>
+    </section>
+
+    <section id="ex">
+      <div class="question-header">
+        <div class="field">
+          <label for="instructions">指示</label>
+          <output id="instructions"></output>
+        </div>
+
+        <div class="field">
+          <label for="question">問題</label>
+          <output id="question"></output>
+        </div>
+      </div>
+
+      <div id="input_div">
+        <label for="input">入力</label>
+        <input id="input" type="text" autocomplete="off">
+      </div>
+
       <div id="choice"></div>
-    </p>
-    <p>
+
       <button id="check">確認</button>
-    </p>
-    <p>
+
       <div id="response_div">
-        <label for="response">答え：</label>
-        <br>
+        <label for="response">答え</label>
         <output id="response"></output>
       </div>
-    </p>
-    <p>
+
       <div id="self_buttons">
         <button id="ok">正解</button>
         <button id="bad">不正解</button>
       </div>
-    </p>
-    <p>
+
       <div id="judge">
         <output id="message"></output>
-        <br>
         <button id="next">次</button>
       </div>
-    </p>
-  </div>
+    </section>
 
-  <div id="result">
-    <label for="points">点数：</label>
-    <output id="points"></output>
-    <p>やり直す、別の問題集をやるにはリロードしてください</p>
-  </div>
+    <section id="result">
+      <h2>結果</h2>
+      <div class="field">
+        <label for="points">点数</label>
+        <output id="points"></output>
+      </div>
+      <p>やり直す、別の問題集をやるにはリロードしてください。</p>
+    </section>
 
-  <div id="error">
-    <label for="errmsg"><br>エラー：</label>
-    <output id="errmsg"></output>
-  </div>
+    <section id="error">
+      <h2>エラー</h2>
+      <output id="errmsg"></output>
+    </section>
+  </main>
 
-  <div class="footer">
+  <footer>
     <hr>
-    <p>home =&gt; <a href="https://ytky110.github.io/">index.html</a></p>
-    <p>Yutaka Goy - &lt;me@yutaka.ch&gt;</p>
-  </div>
+    <p><a href="https://ytky110.github.io/">Home</a></p>
+    <p>Yutaka Goy — &lt;me@yutaka.ch&gt;</p>
+  </footer>
 </body>
 </html>
