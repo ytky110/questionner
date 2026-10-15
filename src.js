@@ -2,6 +2,8 @@ class Elements {
     constructor() {
         const $ = id => document.getElementById(id);
         this.load_div = $("load");
+        this.loaded_div = $("loaded");
+        this.title_output = $("title");
         this.file_input = $("file");
         this.qnumber_output = $("qnumber");
         this.exnumber_input = $("exnumber");
@@ -32,6 +34,7 @@ class Elements {
 
     hide_all() {
         this.load_div.hidden = true;
+        this.loaded_div.hidden = true;
         this.exnumber_input.value = 0;
 
         this.ex_div.hidden = true;
@@ -48,6 +51,11 @@ class Elements {
     show_load() {
         this.hide_all();
         this.load_div.hidden = false;
+    }
+
+    show_loaded() {
+        this.show_load();
+        this.loaded_div.hidden = false;
     }
 
     show_ex() {
@@ -116,6 +124,9 @@ class App {
             return;
         }
 
+        this.elements.show_loaded();
+
+        this.elements.title_output.textContent = this.qdata.title;
         this.elements.qnumber_output.textContent = qnumber.toString();
         this.elements.exnumber_input.value = qnumber;
     }

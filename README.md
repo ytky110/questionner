@@ -2,4 +2,7 @@
 
 A simple exercise Quiz tool.
 
-I haven't come up with a name yet.
+It reads JSON question file (see also [qnner](https://github.com/ytky110/qnner))
+and ask questions for you.
+
+I'm too lazy to explain what are the JSON files like.
