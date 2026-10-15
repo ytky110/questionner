@@ -32,6 +32,7 @@ class Elements {
 
     hide_all() {
         this.load_div.hidden = true;
+        this.exnumber_input.value = 0;
 
         this.ex_div.hidden = true;
         this.choice_div.hidden = true;
@@ -156,6 +157,7 @@ class App {
         this.qactual = this.qlist.shift();
 
         this.elements.show_ex();
+        this.elements.input_input.value = "";
         this.elements.question_output.textContent = this.qactual.question;
 
         switch (this.qactual.type) {
